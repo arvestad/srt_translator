@@ -1,0 +1,236 @@
+1
+00:00:00,000 --> 00:00:10,640
+In här videon ska vi installera paketet Anaconda som innehåller programmet Spyder där
+
+2
+00:00:10,640 --> 00:00:19,560
+vi kommer koda i Python. Så vi börjar med att gå till kurshemsidan, så skrollar vi ner till
+
+3
+00:00:19,560 --> 00:00:29,080
+resurser och så trycker vi installera Python och här finns det lite allmän information kring
+
+4
+00:00:29,080 --> 00:00:34,180
+hur man kodar i Python och så vidare, men vi kommer använda oss av anaconda, så vi klickar på den här
+
+5
+00:00:34,180 --> 00:00:43,480
+länken. Och sen går vi till products och individual edition.
+
+6
+00:00:45,980 --> 00:00:50,000
+Så trycker vi download 
+
+7
+00:00:50,000 --> 00:00:54,680
+och här får vi tre alternativ och det är beroende på vilket operativ system
+
+8
+00:00:54,680 --> 00:01:02,280
+vi sittet på. Jag sitter på MacOS, så jag kommer välja någon av de här två. Det är enklare,
+
+9
+00:01:02,280 --> 00:01:10,680
+skulle jag säga, att göra det igenom en graphical GUI installer, annars måste man öppna terminalen.
+
+10
+00:01:10,680 --> 00:01:13,480
+Så jag tycker på den.
+
+11
+00:01:34,680 --> 00:01:40,680
+Så öppna foldern där den laddas ner, så kan vi dubba klicka på öppna paketet.
+
+12
+00:01:44,000 --> 00:01:54,640
+Så, och acceptera och sen så är det i stort sätt att bara klicka sig igenom de här stegen.
+
+13
+00:01:57,000 --> 00:02:05,680
+Så till exempel, här måste vi acceptera användaravtalet.
+
+14
+00:02:05,680 --> 00:02:12,680
+Så här kan vi välja vart vi vill installera Anaconda, jag trycker här i min home folder.
+
+15
+00:02:12,680 --> 00:02:24,640
+Här kan man ändra liksom default location, men vanligtvis så vet den ganska bra var den ska ligga, så jag skulle inte rekommendera
+
+16
+00:02:24,640 --> 00:02:31,640
+att modifierer här utan vad går vidare.
+
+17
+00:02:31,640 --> 00:02:40,640
+Och sen acceptera lite.
+
+18
+00:02:40,640 --> 00:02:51,640
+Och så trycker vi vidare.
+
+19
+00:02:51,640 --> 00:02:55,640
+Och i slutet så ni att det stod installation failed,
+
+20
+00:02:55,640 --> 00:02:59,640
+men det är bara att jag har installerat Anaconda redan.
+
+21
+00:02:59,640 --> 00:03:02,640
+Så där skulle det stå installation successful.
+
+22
+00:03:02,640 --> 00:03:06,640
+Så nu kan vi öppna Anaconda.
+
+23
+00:03:06,640 --> 00:03:13,640
+Och det kan vi göra igenom på macen så söker jag här.
+
+24
+00:03:22,640 --> 00:03:28,640
+Och det kan ta ett tag för den att ladda.
+
+25
+00:03:33,640 --> 00:03:36,640
+Så.
+
+26
+00:03:36,640 --> 00:03:39,640
+Och så här har vi lite olika program genom Anaconda.
+
+27
+00:03:39,640 --> 00:03:42,640
+Vi kommer använda Spyder för att programmer i.
+
+28
+00:03:42,640 --> 00:03:45,640
+Så då trycker vi att öppna det.
+
+29
+00:03:45,640 --> 00:03:50,640
+Det är också lite segt, så det får vänta på det.
+
+30
+00:03:51,640 --> 00:04:04,640
+Så där.
+
+31
+00:04:04,640 --> 00:04:12,640
+Då har vi Spyder öppet och installerat.
+
+32
+00:04:12,640 --> 00:04:17,640
+Och, ska vi se ta en ny,
+
+33
+00:04:18,640 --> 00:04:21,640
+så här kommer det ut när ni öppnar det.
+
+34
+00:04:21,640 --> 00:04:24,000
+Så då har vi i stort sett tre fönster här.
+
+35
+00:04:24,000 --> 00:04:28,640
+Vi har editorn där vi kommer att skriva kod.
+
+36
+00:04:28,640 --> 00:04:30,640
+Så det är vänster fönstret.
+
+37
+00:04:30,640 --> 00:04:36,640
+Och sen har vi ett så kallat hjälp fönster här.
+
+38
+00:04:36,640 --> 00:04:40,640
+Där man kan få en tutorial eller annat.
+
+39
+00:04:40,640 --> 00:04:43,640
+Jag kommer inte hålla på här så mycket.
+
+40
+00:04:43,640 --> 00:04:47,640
+Utan det finns ju andra ställen att få hjälp och så angående kod.
+
+41
+00:04:47,640 --> 00:04:52,640
+Men sen så har vi det tredje det fönstret som är en av de viktigare.
+
+42
+00:04:52,640 --> 00:04:55,640
+Det är där koden kommer skrivas ut.
+
+43
+00:04:55,640 --> 00:04:59,640
+Så koden som vi skriver här kommer att köras
+
+44
+00:04:59,640 --> 00:05:04,640
+och så kommer det eventuell utdata presenteras i konsolen.
+
+45
+00:05:04,640 --> 00:05:08,640
+Så till exempel kan vi skriva.
+
+46
+00:05:13,640 --> 00:05:17,640
+Så där så.
+
+47
+00:05:17,640 --> 00:05:22,640
+Och det här 'print' är då ett sätt att skriva ut saker i terminalen.
+
+48
+00:05:22,640 --> 00:05:28,640
+Så om vi kör det så kommer vi se att, nu trycker jag här uppe för att köra,
+
+49
+00:05:28,640 --> 00:05:31,640
+så det där vi kör koden här i vänstra fönstret.
+
+50
+00:05:31,640 --> 00:05:35,640
+Och så kommer det upp i det här fönstret.
+
+51
+00:05:35,640 --> 00:05:40,640
+Och då står det först står det bara att den har kört en viss fil.
+
+52
+00:05:40,640 --> 00:05:47,640
+Det här är då själva adressen till min fil på datorn som heter untitled här.
+
+53
+00:05:47,640 --> 00:05:51,640
+Och sen så har vi,
+
+54
+00:05:51,640 --> 00:05:57,640
+det här är själva directoryt där Spyder ligger.
+
+55
+00:05:57,640 --> 00:06:03,640
+Och här har vi då outputen från vårt faktiska program.
+
+56
+00:06:03,640 --> 00:06:07,640
+Så vi kan lägga till grejer här.
+
+57
+00:06:07,640 --> 00:06:13,640
+Vi kan till exempel skriva så, så kommer vi se att
+
+58
+00:06:13,640 --> 00:06:18,640
+det skriver ut fem för att vi kan göra enkel addition.
+
+59
+00:06:18,640 --> 00:06:22,640
+Men mer om sånt i nästa video.
+

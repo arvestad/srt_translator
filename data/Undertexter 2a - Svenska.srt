@@ -1,0 +1,1108 @@
+1
+00:00:00,000 --> 00:00:08,000
+ Hej och välkomna till den här presentationen som kommer att handla om datatyper och booleska uttryck i Python.
+
+2
+00:00:08,000 --> 00:00:17,000
+ Här har jag öppnat Spyder, som ni säkert känner igen så finns det en editor på vänstra sidan och en Python-terminal på högra sidan
+
+3
+00:00:17,000 --> 00:00:23,000
+ vart output av eventuell kod man kör kommer att skrivas ut.
+
+4
+00:00:23,000 --> 00:00:32,000
+ Innan vi går in på datatyper så tänkte jag snabbt gå igenom skillnaden mellan syntax och semantik när det gäller programmering.
+
+5
+00:00:32,000 --> 00:00:40,000
+ Syntax handlar om regler för hur man skriver, medan semantik handlar om betydelsen av vad man skriver.
+
+6
+00:00:40,000 --> 00:00:51,000
+ Python är rätt bra på att upptäcka syntaxfel, det vill säga helt enkelt grammatiska fel ur ett programmeringsspråksperspektiv.
+
+7
+00:00:51,000 --> 00:01:01,000
+ Då får man helt enkelt ett fel som heter SyntaxError och då vet man att man har skrivit fel någonstans, helt enkelt ogiltig Python-kod.
+
+8
+00:01:01,000 --> 00:01:10,000
+ Semantik är svårare att upptäcka eftersom det kan vara helt giltig Python-kod, men som inte gör det man vill att den ska göra.
+
+9
+00:01:10,000 --> 00:01:14,000
+ Som ett exempel här kan vi börja med att definiera en variabel
+
+10
+00:01:14,000 --> 00:01:22,000
+ som vi kanske skulle vilja att det är a lika med 1, men om vi skriver fel, till exempel något som tre lika med tecken i rad
+
+11
+00:01:22,000 --> 00:01:26,000
+ så ser vi redan att Spyder här klagar.
+
+12
+00:01:26,000 --> 00:01:31,000
+ Om vi tittar på vad kodanalysen är så står det invalid syntax.
+
+13
+00:01:31,000 --> 00:01:37,000
+ Skulle man köra den här raden så skulle man se något liknande som SyntaxError i terminalen här
+
+14
+00:01:37,000 --> 00:01:44,000
+ Det är en tydlig ledtråd till att man har skrivit fel någonstans och då får man gå och titta i koden vad man har skrivit fel.
+
+15
+00:01:44,000 --> 00:01:49,000
+ Ett semantiskt fel kan vara svårare att upptäcka för det är helt enkelt laglig kod.
+
+16
+00:01:49,000 --> 00:01:52,000
+ Som om vi nu har definierat en variabel som heter a på rätt sätt.
+
+17
+00:01:52,000 --> 00:01:54,000
+ Vi har en variabel som heter b.
+
+18
+00:01:54,000 --> 00:02:02,000
+ De här innehåller värdena 1 och 2, och så vill vi plussa ihop dem till en tredje variabel som vi kanske kallar my_add.
+
+19
+00:02:03,000 --> 00:02:08,000
+ Har man nu skrivit a minus b här, och det här är ett ganska enkelt exempel,
+
+20
+00:02:08,000 --> 00:02:14,000
+ men då gör helt enkelt koden inte det som man har förväntat sig eller kanske man har tänkt sig,
+
+21
+00:02:14,000 --> 00:02:23,000
+ Utan istället för att addera tal så subtraherar den de här två talen och ger inte den output som man förväntar sig av den här koden.
+
+22
+00:02:23,000 --> 00:02:30,000
+ Den här typen som finns på rad 12 här är ett semantiskt fel som är mycket mer svårupptäckt
+
+23
+00:02:30,000 --> 00:02:33,000
+ eftersom Python har absolut inget problem med det här.
+
+24
+00:02:33,000 --> 00:02:37,000
+ Nu är det ett jätteenkelt exempel men så att ni förstår skillnaden.
+
+25
+00:02:37,000 --> 00:02:40,000
+ Så hur förhindrar man semantiska fel då?
+
+26
+00:02:40,000 --> 00:02:47,000
+ Jo, det handlar mycket om att ha välstrukturerad kod och också väldokumenterad kod.
+
+27
+00:02:47,000 --> 00:02:54,000
+ Så att om någon annan läser ens kod, att de förstår vad vill jag göra med de här raderna kod till exempel.
+
+28
+00:02:54,000 --> 00:02:57,000
+ Om man förstår vad man vill göra då är det lätt att hitta ett fel.
+
+29
+00:02:57,000 --> 00:03:04,000
+ Om det är odokumenterat då kan det vara svårt att se skillnaden mellan plus och minus till exempel och sådant i den stilen.
+
+30
+00:03:04,000 --> 00:03:07,000
+ Så vi går vidare helt enkelt med datatyper.
+
+31
+00:03:07,000 --> 00:03:12,000
+ Datatyper i Python har redan introducerats i en tidigare presentation,
+
+32
+00:03:12,000 --> 00:03:21,000
+ men huvuddatatyperna vi kommer att prata om och framförallt använda under den här kursen
+
+33
+00:03:21,000 --> 00:03:34,000
+ är strängar som är str i Python, heltal; integers på engelska som är int, flyttal på svenska; float i Python.
+
+34
+00:03:34,000 --> 00:03:38,000
+ Och sen så komplexa tal, det kommer vi inte använda så mycket men det är bra att veta att de finns.
+
+35
+00:03:38,000 --> 00:03:40,000
+ De har typen complex.
+
+36
+00:03:40,000 --> 00:03:47,000
+ Sen har vi bool, booleska värden som är antingen sanna eller falska.
+
+37
+00:03:47,000 --> 00:03:49,000
+ De representeras av bool.
+
+38
+00:03:49,000 --> 00:03:57,000
+ Och sen till slut har vi NoneType som är en typ som inte innehåller något värde i princip.
+
+39
+00:03:57,000 --> 00:03:59,000
+ Så att vi börjar med strängar.
+
+40
+00:03:59,000 --> 00:04:01,000
+ Det här har vi sett förut.
+
+41
+00:04:01,000 --> 00:04:07,000
+ Vi har någonting som man skriver. Om jag definierar en variabel som heter my_string,
+
+42
+00:04:07,000 --> 00:04:10,000
+ den innehåller tecknet 1.
+
+43
+00:04:10,000 --> 00:04:15,000
+ Så det här är alltså inte ett värde i form av ett heltal utan det är tecknet 1.
+
+44
+00:04:16,000 --> 00:04:21,000
+ Man kan ha en längre sträng som innehåller massa olika saker.
+
+45
+00:04:24,000 --> 00:04:27,000
+ Vi kan blanda ganska mycket av vad vi vill här.
+
+46
+00:04:27,000 --> 00:04:33,000
+ Operatorer och tecken och siffror och så vidare.
+
+47
+00:04:33,000 --> 00:04:37,000
+ Allt det här om vi nu skulle välja att köra den här koden,
+
+48
+00:04:37,000 --> 00:04:41,000
+ så vi printar ut my_string,
+
+49
+00:04:41,000 --> 00:04:45,000
+ och vi printar ut my_longer_string.
+
+50
+00:04:45,000 --> 00:04:49,000
+ Om vi markerar den här koden så kör vi bara det här lilla blocket.
+
+51
+00:04:49,000 --> 00:04:52,000
+ Om vi trycker på den här svarta pilen här uppe.
+
+52
+00:04:52,000 --> 00:04:54,000
+ Så vi kör det.
+
+53
+00:04:54,000 --> 00:04:57,000
+ Då ser man att den har kört det här kodblocket.
+
+54
+00:04:57,000 --> 00:05:01,000
+ Men framförallt resultatet är att den printar ut 1.
+
+55
+00:05:01,000 --> 00:05:06,000
+ Och så printar den ut Hello my name is och massa tecken som vi har skrivit in där.
+
+56
+00:05:07,000 --> 00:05:11,000
+ Så helt enkelt strängar är tecken som sparas,
+
+57
+00:05:11,000 --> 00:05:17,000
+ vare sig det är bokstäver eller siffror eller några operatorer som gånger och lika med.
+
+58
+00:05:17,000 --> 00:05:21,000
+ Det som är värt att notera här är att det kan vara svårt att se skillnad på
+
+59
+00:05:21,000 --> 00:05:26,000
+ om det här faktiskt är ett heltal eller om det faktiskt är en sträng.
+
+60
+00:05:26,000 --> 00:05:31,000
+ Och vi kommer komma in lite mer på skillnaden mellan de två i nästa punkt.
+
+61
+00:05:31,000 --> 00:05:34,000
+ Som är integers, det vill säga heltal.
+
+62
+00:05:35,000 --> 00:05:39,000
+ Ett heltal representeras av, helt enkelt, heltal.
+
+63
+00:05:39,000 --> 00:05:44,000
+ Så om jag skriver sådär, så liknande som my_string som innehöll tecknet 1,
+
+64
+00:05:44,000 --> 00:05:48,000
+ så skriver jag bara 1 så har man heltalet 1.
+
+65
+00:05:48,000 --> 00:05:51,000
+ Och det är såklart, heltal kan vara vilket heltal som helst.
+
+66
+00:05:51,000 --> 00:05:57,000
+ Heltal i Python kan vara godtyckligt stora.
+
+67
+00:05:57,000 --> 00:06:04,000
+ Så my_large_int kan jag skriva som 9 upphöjt i 507.
+
+68
+00:06:04,000 --> 00:06:06,000
+ Något i den stilen.
+
+69
+00:06:06,000 --> 00:06:08,000
+ Och det här kommer vara ett jättestort tal.
+
+70
+00:06:08,000 --> 00:06:11,000
+ Vi kan ju printa båda de här två, precis som vi gjorde tidigare.
+
+71
+00:06:11,000 --> 00:06:18,000
+ print(my_int), det borde ge 1, och print(my_large_int).
+
+72
+00:06:18,000 --> 00:06:23,000
+ Så om vi markerar den här koden igen och kör den så borde vi se en output här.
+
+73
+00:06:23,000 --> 00:06:25,000
+ Här är den här första 1:an.
+
+74
+00:06:25,000 --> 00:06:30,000
+ Och notera att om man bara printar till terminalen så ser den precis likadan ut som den här 1:an, som var en sträng,
+
+75
+00:06:30,000 --> 00:06:32,000
+ fastän det här är ett heltal.
+
+76
+00:06:32,000 --> 00:06:35,000
+ Sen har vi ett väldigt, väldigt, väldigt stort heltal.
+
+77
+00:06:35,000 --> 00:06:37,000
+ Skillnad i det här är
+
+78
+00:06:37,000 --> 00:06:41,000
+ inte någonting som man behöver bry sig så jättemycket om, eftersom Python hanterar det,
+
+79
+00:06:41,000 --> 00:06:47,000
+ men hur stor plats i minnet de här talen har skiljer sig.
+
+80
+00:06:48,000 --> 00:06:53,000
+ En 1:a tar mycket mindre plats än ett så här stort tal, vad det nu kan vara.
+
+81
+00:06:53,000 --> 00:06:56,000
+ Det är inte någonting som man vanligtvis behöver bekymra sig om,
+
+82
+00:06:56,000 --> 00:07:02,000
+ men det är bra att vara medveten om att det är svårare att representeras av Python.
+
+83
+00:07:04,000 --> 00:07:07,000
+ Flyttal har ni också sett tidigare.
+
+84
+00:07:09,000 --> 00:07:14,000
+ Vi går ner till här, och så har vi my_float.
+
+85
+00:07:14,000 --> 00:07:21,000
+ De representeras helt enkelt av att man skriver ett flyttal i form av ett decimaltal på något sätt.
+
+86
+00:07:21,000 --> 00:07:25,000
+ Här kan man skriva till exempel bara 1,
+
+87
+00:07:25,000 --> 00:07:28,000
+ och sen så en punkt så skulle det vara samma sak,
+
+88
+00:07:28,000 --> 00:07:33,000
+ eller något annat som vilket flyttal man nu skulle vilja ha.
+
+89
+00:07:33,000 --> 00:07:37,000
+ Flyttal skiljer sig lite från heltal,
+
+90
+00:07:37,000 --> 00:07:43,000
+ på så sätt att flyttal är svåra att representera exakt,
+
+91
+00:07:44,000 --> 00:07:46,000
+ för datorer generellt sett,
+
+92
+00:07:46,000 --> 00:07:50,000
+ så det finns olika representationer om hur flyttal ska representeras.
+
+93
+00:07:50,000 --> 00:07:54,000
+ Python har en version som är ganska vanligt använd,
+
+94
+00:07:54,000 --> 00:07:57,000
+ som ni kan titta på Python-dokumentationen,
+
+95
+00:07:57,000 --> 00:08:00,000
+ eller lite i kompendiet om ni vill lära er mer,
+
+96
+00:08:00,000 --> 00:08:06,000
+ men det viktigaste att förstå här är att flyttal inte alltid representeras exakt.
+
+97
+00:08:06,000 --> 00:08:11,000
+ Det finns ingen riktig talrepresentation som representerar alla flyttal exakt.
+
+98
+00:08:11,000 --> 00:08:28,000
+ Till exempel om vi har ett flyttal som går ut på att plussa ihop 0.1 och 0.2.
+
+99
+00:08:28,000 --> 00:08:31,000
+ Det här tycker man vore väldigt enkelt.
+
+100
+00:08:31,000 --> 00:08:34,000
+ Man räknar det här lätt i huvudet och tycker att det är 0.3.
+
+101
+00:08:34,000 --> 00:08:40,000
+ Om vi nu skulle välja att skriva ut det här och se var det är.
+
+102
+00:08:40,000 --> 00:08:49,000
+ Vet inte varför den gjorde såhär.... Så kan vi titta. 
+
+103
+00:08:49,000 --> 00:08:55,000
+ Här ser man att det är faktiskt inte 0.3 för Python,
+
+104
+00:08:55,000 --> 00:08:58,000
+ utan det är 0.3000... och sen slutar det på en 4:a.
+
+105
+00:08:58,000 --> 00:09:08,000
+ Det här är exakt en sån sak där det inte är helt exakt att representera de här två flyttalen i en addition,
+
+106
+00:09:08,000 --> 00:09:17,000
+ så det är bra att vara medveten om att ett flyttal inte är exakt på samma sätt som vi tänker i till exempel matematik.
+
+107
+00:09:17,000 --> 00:09:29,000
+ Komplexa tal representeras genom att skriva att man har en reell del, som ni säkert är medvetna om,
+
+108
+00:09:29,000 --> 00:09:34,000
+ och sen en imaginär del som man till exempel kan representera med tal 2,
+
+109
+00:09:34,000 --> 00:09:40,000
+ men det viktiga här är att man lägger till ett j efter den imaginära delen.
+
+110
+00:09:40,000 --> 00:09:44,000
+ Det här funkar precis som man tänker sig. Så om man har...
+
+111
+00:09:44,000 --> 00:09:57,000
+ Om vi skriver ut någonting som är 2j gånger 2j så borde man förvänta sig att det blir en negativ reell del
+
+112
+00:09:57,000 --> 00:10:00,000
+ istället för två imaginära delar
+
+113
+00:10:00,000 --> 00:10:11,000
+ och det ser man att resultatet blir, kommer här, att det är -4 som är den reella delen och sen så ingen, eller 0 som är den imaginära delen.
+
+114
+00:10:15,000 --> 00:10:19,000
+ Värden som har sant eller falskt kallas booleska värden.
+
+115
+00:10:19,000 --> 00:10:23,000
+ Det finns två nyckelord för sant eller falskt i Python.
+
+116
+00:10:23,000 --> 00:10:31,000
+ Det är True som vi ser här, så ett stort T, och False på samma sätt.
+
+117
+00:10:31,000 --> 00:10:35,000
+ Det finns inte så jättemycket mer att säga om dem.
+
+118
+00:10:35,000 --> 00:10:44,000
+ Den här typen.... Den här datatypen används väldigt ofta när man gör tester för att testa om någonting är sant eller falskt,
+
+119
+00:10:44,000 --> 00:10:48,000
+ så utvärderar man ett uttryck som ger tillbaka antingen sant eller falskt.
+
+120
+00:10:48,000 --> 00:10:53,000
+ Det kommer vi att titta mer på i några senare presentationer.
+
+121
+00:10:53,000 --> 00:11:01,000
+ Sist men inte minst så finns det en typ som i princip inte representerar någon specifik typ,
+
+122
+00:11:01,000 --> 00:11:07,000
+ utan specificerar i princip att det finns ingenting.
+
+123
+00:11:07,000 --> 00:11:10,000
+ Det kallas None i Python.
+
+124
+00:11:10,000 --> 00:11:18,000
+ Om man har bakgrund i andra programmeringsspråk, till exempel C, så finns det ofta NULL som ett uttryck för det här.
+
+125
+00:11:22,000 --> 00:11:28,000
+ Och printar man ut det här så ger det precis det svar man har tänkt sig.
+
+126
+00:11:29,000 --> 00:11:34,000
+ Det vill säga att den säger att det är en None till terminal.
+
+127
+00:11:35,000 --> 00:11:45,000
+ Och None-typer är någonting som oftast returneras av funktioner som vi kommer att prata om i en senare presentation.
+
+128
+00:11:45,000 --> 00:11:53,000
+ Så det här med typer, i större delen av tiden så funkar det automatiskt i Python
+
+129
+00:11:53,000 --> 00:11:59,000
+ och man behöver inte bry sig särskilt mycket utan man kan plussa och dela med flyttal och heltal och så vidare och allting funkar fint.
+
+130
+00:12:00,000 --> 00:12:08,000
+ Men det är när man behöver specifikt veta vilken typ det är eller veta vilka typer av operationer som funkar för vissa typer
+
+131
+00:12:08,000 --> 00:12:11,000
+ som det blir viktigt med typomhandling.
+
+132
+00:12:11,000 --> 00:12:17,000
+ Typomhandling delas in i implicit och explicit typomhandling.
+
+133
+00:12:17,000 --> 00:12:22,000
+ Den implicita är sånt som man slipper tänka på särskilt mycket.
+
+134
+00:12:22,000 --> 00:12:36,000
+ Om vi till exempel tar värdet som vi hade.... Vi kan tilldela det så här, my_int, som vi definierade här uppe på rad 23, plus my_float,
+
+135
+00:12:36,000 --> 00:12:43,000
+ då funkar det här alldeles utmärkt för Python om vi har definierat de variablerna, det får vi se där.
+
+136
+00:12:43,000 --> 00:12:48,000
+ Så att den beräknar det, så värdet av x är 2 i det här fallet.
+
+137
+00:12:49,000 --> 00:12:55,000
+ Här kan man lägga märke till att om man skriver ut x så ser det ut som ett flyttal.
+
+138
+00:12:55,000 --> 00:12:57,000
+ Så hur kollar man det här i Python?
+
+139
+00:12:57,000 --> 00:13:05,000
+ Man kan använda sig av något som heter type och sen den variabeln man vill titta vilken typ det är på.
+
+140
+00:13:05,000 --> 00:13:12,000
+ Så om jag skulle skriva type(x) så kommer den returnera att den är en float.
+
+141
+00:13:13,000 --> 00:13:27,000
+ Så här är det viktigt att förstå att om man har ett heltal plus ett flyttal så har flyttalet högre precedens; vilken typ uttrycket ska returnera.
+
+142
+00:13:27,000 --> 00:13:40,000
+ Så att här om man har ett flyttal plus ett heltal då omvandlas det till någonting som inte förlorar någon precision,
+
+143
+00:13:40,000 --> 00:13:49,000
+ vilket betyder att my_int som hade heltalet 1 blir 1.0 och sen adderas det till my_float som var något annat 1.0
+
+144
+00:13:49,000 --> 00:13:53,000
+ så att resultatet blir ett flyttal.
+
+145
+00:13:53,000 --> 00:14:02,000
+ Det här funkar med numeriska typer generellt sett och man behöver inte bry sig så mycket.
+
+146
+00:14:02,000 --> 00:14:04,000
+ Däremot ibland kan det bli fel.
+
+147
+00:14:04,000 --> 00:14:15,000
+ Till exempel om man skulle försöka att definiera om den här variabeln x men försöker plussa ihop my_int plus my_string.
+
+148
+00:14:15,000 --> 00:14:20,000
+ Kom ihåg att my_string innehöll tecknet 1 här.
+
+149
+00:14:20,000 --> 00:14:28,000
+ Så om vi försöker att göra det här och printa x. Exekverar den här delen av koden
+
+150
+00:14:28,000 --> 00:14:37,000
+ då kommer Python klaga och säga unsupported operand type for addition eller plus, int och string.
+
+151
+00:14:37,000 --> 00:14:42,000
+ Så att Python vet inte hur man lägger ihop ett heltal och en sträng.
+
+152
+00:14:42,000 --> 00:14:48,000
+ För att göra det här så finns det, beroende på vad man vill ha här...
+
+153
+00:14:48,000 --> 00:14:56,000
+ Men om vi säger att vi ser att det finns en 1:a och vi vet att det här är någonting som vi vill ha som ett heltal
+
+154
+00:14:56,000 --> 00:15:05,000
+ då kan man använda sig av den typen man vill omvandla till och ha variabeln som ett argument.
+
+155
+00:15:05,000 --> 00:15:18,000
+ Så om man skriver int här och my_string då försöker Python omvandla det som finns i my_string till ett heltal som ges av int.
+
+156
+00:15:18,000 --> 00:15:24,000
+ Så om vi försöker göra det här igen så visar det sig att det här funkar bra och värdet blir 2.
+
+157
+00:15:24,000 --> 00:15:38,000
+ Och typen av x i det här fallet blir ett heltal eftersom vi har ett heltal i my_int och ett heltal som har blivit omvandlat från strängen som heter my_string.
+
+158
+00:15:38,000 --> 00:15:49,000
+ Man kan notera här att om man skulle försöka omvandla den andra strängen som heter my_longer_string som innehöll massa text och operander och allt möjligt
+
+159
+00:15:49,000 --> 00:15:57,000
+ då kommer Python igen att klaga som man ser här: Att den vet inte hur den ska omvandla den här strängen till en integer.
+
+160
+00:15:57,000 --> 00:16:05,000
+ Så det här kallas explicit typomvandling: När man vet vilken typ man vill omvandla till och försöker omvandla till det.
+
+161
+00:16:05,000 --> 00:16:12,000
+ Typiskt när det här är viktigt är när man använder sig av input som ni såg i en tidigare presentation.
+
+162
+00:16:12,000 --> 00:16:19,000
+ Input som vi gör till exempel så här. Om man: my_answer, input, write an integer
+
+163
+00:16:19,000 --> 00:16:44,000
+ Kan vi titta på vad typen av my_answer blir.
+
+164
+00:16:45,000 --> 00:16:52,000
+ Så om vi exekverar den här koden så, då kommer den fråga, Write an integer, och nu ska jag vara snäll 
+
+165
+00:16:52,000 --> 00:16:56,000
+ så jag skriver en integer. Jag skriver 5 till exempel.
+
+166
+00:16:56,000 --> 00:17:00,000
+ Sen går den vidare och läser in det i my_answer.
+
+167
+00:17:00,000 --> 00:17:06,000
+ Så nu det jag skrev in här är sparat i variabeln my_answer, eller identifieraren my_answer.
+
+168
+00:17:06,000 --> 00:17:11,000
+ Och sen typen av my_answer ser vi i sträng här.
+
+169
+00:17:11,000 --> 00:17:18,000
+ Och det är något som input alltid gör. Allting som läses in av input tolkas som en sträng.
+
+170
+00:17:18,000 --> 00:17:21,000
+ Det är därför man kan skriva in vilka tecken som helst och så vidare.
+
+171
+00:17:21,000 --> 00:17:30,000
+ Men om man till exempel vill använda my_answer i ett aritmetiskt uttryck och försäkra sig om att det är det som man vill ha
+
+172
+00:17:30,000 --> 00:17:35,000
+ då måste man använda sig av någonting som är en typomvandling.
+
+173
+00:17:35,000 --> 00:17:43,000
+ Så om vi vill ha ett heltal av ens svar så kan man göra samma sak igen.
+
+174
+00:17:43,000 --> 00:17:48,000
+ Fast man har nu använt sig av int för att typomvandla det här svaret.
+
+175
+00:17:48,000 --> 00:17:56,000
+ Så om vi igen skriver 5 så kommer typen vara ett heltal, en integer.
+
+176
+00:17:56,000 --> 00:18:02,000
+ Som man sen kan använda med till exempel att plussa ihop genom ett flyttal eller något liknande.
+
+177
+00:18:02,000 --> 00:18:13,000
+ Skulle vi inte ha gjort det här och försökt plussa ihop någonting som my_addition som kanske är 2
+
+178
+00:18:13,000 --> 00:18:17,000
+ plus vad man nu har läst in i my_answer.
+
+179
+00:18:17,000 --> 00:18:25,000
+ Om vi exekverar bara de här två raderna så kommer den försöka ta det som finns i my_answer vilket är en sträng.
+
+180
+00:18:25,000 --> 00:18:30,000
+ Så om vi testar 5 igen så får vi den här typen av felmedellande som vi tidigare har haft.
+
+181
+00:18:30,000 --> 00:18:40,000
+ Booleska uttryck i Python är uttryck som utvärderas till antingen sant eller falskt.
+
+182
+00:18:40,000 --> 00:18:46,000
+ Och det är där de här booleska uttrycken True eller False eller booleska värdena True eller False kommer in.
+
+183
+00:18:46,000 --> 00:18:54,000
+ Det är värt att notera i Python att det mesta anses vara sant i Python.
+
+184
+00:18:54,000 --> 00:18:59,000
+ Så om vi försöker typomvandla vilket vi kan använda oss av bool.
+
+185
+00:18:59,000 --> 00:19:04,000
+ Och sen så typomvandlar vi 3 till bool och vi kan ta något annat,
+
+186
+00:19:04,000 --> 00:19:14,000
+ vi kan ta 4.28 och vi kan försöka typomvandla en sträng: hello.
+
+187
+00:19:14,000 --> 00:19:30,000
+ Om vi kör den här koden.... Får vi se om det här går som man tänkt sig... Okej, det blev fel. Okej, vi kör den här rad för rad. Så om vi försöker typomvandla bool så blir resultatet True.
+
+188
+00:19:30,000 --> 00:19:35,000
+ Typomvandlar vi bool av 4.28 så blir resultatet också True.
+
+189
+00:19:35,000 --> 00:19:41,000
+ Och typomvandlar vi bool av strängen hello så blir resultatet också True.
+
+190
+00:19:41,000 --> 00:19:43,000
+ Så allt det här är sant.
+
+191
+00:19:43,000 --> 00:19:51,000
+ Typiska värden som anses vara falska, alltså False, det är tomma värden.
+
+192
+00:19:51,000 --> 00:20:01,000
+ Så ett värde är till exempel bool av 0, bool av 0.0 eller bool av den tomma strängen.
+
+193
+00:20:01,000 --> 00:20:09,000
+ Så om man tar den sista bool här bara av den tomma strängen så ger den False.
+
+194
+00:20:09,000 --> 00:20:22,000
+ Eller bool av None som var ett inget värde borde också ges som False.
+
+195
+00:20:22,000 --> 00:20:31,000
+ Så det är bra att veta att sant ges ganska ofta om man utvärderar något av de här uttrycken.
+
+196
+00:20:32,000 --> 00:20:39,000
+ Så för att få tillbaka svar som är sanna eller falska så kan man till exempel använda sig av jämförelseoperatorer.
+
+197
+00:20:39,000 --> 00:20:43,000
+ Och det finns väldigt, eller inte väldigt många, men ganska många.
+
+198
+00:20:43,000 --> 00:20:45,000
+ Vi ska gå igenom några stycken nu.
+
+199
+00:20:45,000 --> 00:20:52,000
+ Så om vi bara definierar två stycken variabler som innehåller värdena 1, 2: x och y.
+
+200
+00:20:52,000 --> 00:20:57,000
+ Så kan vi fråga..., använda oss till exempel.... Om vi gör så här....
+
+201
+00:20:58,000 --> 00:21:06,000
+ Om vi vill se om x är lika med y, så testa om det är en likhet,
+
+202
+00:21:06,000 --> 00:21:10,000
+ så använder vi dubbla likamedtecken.
+
+203
+00:21:10,000 --> 00:21:18,000
+ Så det är värt att poängtera här att det är dubbla likamedtecken snarare än något annat.
+
+204
+00:21:19,000 --> 00:21:27,000
+ Till exempel ett likamedtecken; ett likamedtecken tilldelar medan dubbla likamedtecken testar efter likhet.
+
+205
+00:21:27,000 --> 00:21:32,000
+ Så här är x lika med 1 och y lika med 2 så att resultatet blir False.
+
+206
+00:21:32,000 --> 00:21:39,000
+ Vi kan testa om de inte är lika med varandra.
+
+207
+00:21:39,000 --> 00:21:42,000
+ Genom utropstecken likamedtecken.
+
+208
+00:21:42,000 --> 00:21:46,000
+ Så här testar man alltså helt enkelt icke-likhet.
+
+209
+00:21:46,000 --> 00:21:49,000
+ Eller olikhet.
+
+210
+00:21:49,000 --> 00:21:52,000
+ Då kan vi utvärdera den raden igen.
+
+211
+00:21:52,000 --> 00:21:56,000
+ Och då säger det sant eftersom x är inte lika med 2.
+
+212
+00:21:56,000 --> 00:22:03,000
+ Fler operatorer till exempel mindre än, strikt mindre än.
+
+213
+00:22:03,000 --> 00:22:06,000
+ I det här fallet borde det här ge sant.
+
+214
+00:22:06,000 --> 00:22:09,000
+ De andra operatorerna är ganska intuitiva.
+
+215
+00:22:09,000 --> 00:22:13,000
+ Mindre eller lika med skrivs så här.
+
+216
+00:22:13,000 --> 00:22:16,000
+ Det skulle också vara sant i det här fallet.
+
+217
+00:22:16,000 --> 00:22:23,000
+ Så det här är något man får vänja sig vid lite grann.
+
+218
+00:22:23,000 --> 00:22:27,000
+ Just när man vill testa för saker.
+
+219
+00:22:27,000 --> 00:22:33,000
+ Så jämförelseoperatorer har en operand på vänstra sidan och en operand på högra sidan,
+
+220
+00:22:33,000 --> 00:22:40,000
+ och resultatet av det är en boolstyp som antingen har värdet True eller False.
+
+221
+00:22:40,000 --> 00:22:43,000
+ Logiska operatorer i Python
+
+222
+00:22:43,000 --> 00:22:48,000
+ ges av and, or och not.
+
+223
+00:22:48,000 --> 00:22:59,000
+ Och de helt enkelt.... Ska vi se här om vi kom på något bra...
+
+224
+00:23:00,000 --> 00:23:05,000
+ Om vi omdefinierar de här två variablerna, x och y till True och False.
+
+225
+00:23:05,000 --> 00:23:10,000
+ Så kan vi helt enkelt se efter om de båda är sanna.
+
+226
+00:23:10,000 --> 00:23:13,000
+ Så vi frågar helt enkelt, är både x och y sant?
+
+227
+00:23:13,000 --> 00:23:20,000
+ Och det gör man med, nu skriver jag bara ut resultatet här, men x and y.
+
+228
+00:23:20,000 --> 00:23:27,000
+ Så här ser ni att Spyder redan har färgat ordet and eftersom det är ett nyckelord eller reserverat ord i Python.
+
+229
+00:23:27,000 --> 00:23:31,000
+ Så är x och y sanna: x and y.
+
+230
+00:23:31,000 --> 00:23:35,000
+ Resultatet här kommer att vara falskt eftersom båda inte är sanna.
+
+231
+00:23:35,000 --> 00:23:39,000
+ Så om vi printar det så står det False.
+
+232
+00:23:39,000 --> 00:23:45,000
+ Vill man fråga om antingen x eller y är sanna så använder man sig av or.
+
+233
+00:23:45,000 --> 00:23:52,000
+ Printar ut det igen, det ger ett True eftersom x är sant.
+
+234
+00:23:52,000 --> 00:23:55,000
+ Då spelar det ingen roll om y är sant eller falskt.
+
+235
+00:23:55,000 --> 00:23:57,000
+ Utan någon av dem är sanna.
+
+236
+00:23:57,000 --> 00:24:02,000
+ Man kan också titta... ha en negation.
+
+237
+00:24:02,000 --> 00:24:09,000
+ Så om man skriver not y så ändrar man helt enkelt det booleska värdet.
+
+238
+00:24:09,000 --> 00:24:14,000
+ Så värdet här i y är False, men not y blir då True,
+
+239
+00:24:14,000 --> 00:24:18,000
+ som vi ser resultatet av där.
+
+240
+00:24:19,000 --> 00:24:23,000
+ Så sist ska vi gå igenom lite tilldelningsoperatorer,
+
+241
+00:24:23,000 --> 00:24:29,000
+ eller det är helt enkelt syntaktiskt socker för att göra saker lite snyggare.
+
+242
+00:24:29,000 --> 00:24:34,000
+ Vi har ju sett en tilldelningsoperator som är lika med.
+
+243
+00:24:34,000 --> 00:24:38,000
+ Så om vi till exempel börjar om med att skriva x lika med 1 här.
+
+244
+00:24:38,000 --> 00:24:40,000
+ Det har vi sett många gånger förut.
+
+245
+00:24:40,000 --> 00:24:48,000
+ Skulle man vilja plussa på x med 1 så kan man skriva x lika med x plus 1.
+
+246
+00:24:48,000 --> 00:24:55,000
+ Så det som händer här är att högra sidan av likamedtecknet är ett uttryck.
+
+247
+00:24:55,000 --> 00:24:59,000
+ Det det gör är att addera värdet som finns i x,
+
+248
+00:24:59,000 --> 00:25:02,000
+ och sen så värdet 1,
+
+249
+00:25:02,000 --> 00:25:05,000
+ och sen så tilldela det till x igen.
+
+250
+00:25:05,000 --> 00:25:08,000
+ Så här har värdet x lika med 1,
+
+251
+00:25:08,000 --> 00:25:11,000
+ och 1 är 1 så att resultatet blir 2.
+
+252
+00:25:11,000 --> 00:25:16,000
+ Så om vi skriver ut x här och exekverar de här tre raderna.
+
+253
+00:25:16,000 --> 00:25:20,000
+ Så ser vi att resultatet här blir 2.
+
+254
+00:25:20,000 --> 00:25:27,000
+ Ett smidigare sätt att skriva precis samma sak är att använda sig av
+
+255
+00:25:27,000 --> 00:25:32,000
+ den här tilldelningsoperatorn som har först ett plus och sen ett lika med,
+
+256
+00:25:32,000 --> 00:25:34,000
+ och sen bara en 1:a.
+
+257
+00:25:34,000 --> 00:25:39,000
+ Det här är precis samma sak som att skriva det vi skrev nyss.
+
+258
+00:25:39,000 --> 00:25:42,000
+ Som man inte ser så bra nu.
+
+259
+00:25:42,000 --> 00:25:44,000
+ Så helt enkelt.
+
+260
+00:25:44,000 --> 00:25:48,000
+ Och de här operatorerna finns för de vanliga aritmetiska uttrycken.
+
+261
+00:25:48,000 --> 00:25:51,000
+ Till exempel plus som vi har använt här.
+
+262
+00:25:51,000 --> 00:25:53,000
+ Så plus lika med, eller minus;
+
+263
+00:25:53,000 --> 00:25:57,000
+ minus lika med, gånger lika med, delat med lika med.
+
+264
+00:25:57,000 --> 00:25:59,000
+ Vi kan visa.
+
+265
+00:25:59,000 --> 00:26:03,000
+ Självklart behöver man inte bara ha 1 här utan man kan ha x.
+
+266
+00:26:03,000 --> 00:26:05,000
+ Vad som helst.
+
+267
+00:26:05,000 --> 00:26:07,000
+ Gånger lika med 4.
+
+268
+00:26:07,000 --> 00:26:13,000
+ Så om vi försöker utvärdera det här så har vi en variabel som först innehåller värdet 1.
+
+269
+00:26:13,000 --> 00:26:15,000
+ x lika med 1.
+
+270
+00:26:15,000 --> 00:26:18,000
+ Sen så plussas värdet 1 på till variabeln.
+
+271
+00:26:18,000 --> 00:26:20,000
+ Så här har den värdet 2.
+
+272
+00:26:20,000 --> 00:26:23,000
+ Och sen så tar man det gånger 4.
+
+273
+00:26:23,000 --> 00:26:27,000
+ Så att värdet 2 gånger 4 och läggs till i x.
+
+274
+00:26:27,000 --> 00:26:32,000
+ Så jag hoppas att det här kanske borde bli någonting som 8.
+
+275
+00:26:32,000 --> 00:26:39,000
+ Jag tror att det är det vi skulle gå igenom den här presentationen.
+
+276
+00:26:39,000 --> 00:26:43,000
+ Så öva lite på det och så syns vi på nästa presentation.
+
+277
+00:26:43,000 --> 00:26:45,000
+ Tack!
+
