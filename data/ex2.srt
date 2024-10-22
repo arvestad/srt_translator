@@ -1,0 +1,39 @@
+1
+00:00:00,000 --> 00:00:10,640
+In här videon ska vi installera paketet Anaconda som innehåller programmet Spyder där
+
+2
+00:00:10,640 --> 00:00:19,560
+vi kommer koda i Python. Så vi börjar med att gå till kurshemsidan, så skrollar vi ner till
+
+3
+00:00:19,560 --> 00:00:29,080
+resurser och så trycker vi installera Python och här finns det lite allmän information kring
+
+4
+00:00:29,080 --> 00:00:34,180
+hur man kodar i Python och så vidare, men vi kommer använda oss av anaconda, så vi klickar på den här
+
+5
+00:00:34,180 --> 00:00:43,480
+länken. Och sen går vi till products och individual edition.
+
+6
+00:00:45,980 --> 00:00:50,000
+Så trycker vi download 
+
+7
+00:00:50,000 --> 00:00:54,680
+och här får vi tre alternativ och det är beroende på vilket operativ system
+
+8
+00:00:54,680 --> 00:01:02,280
+vi sittet på. Jag sitter på MacOS, så jag kommer välja någon av de här två. Det är enklare,
+
+9
+00:01:02,280 --> 00:01:10,680
+skulle jag säga, att göra det igenom en graphical GUI installer, annars måste man öppna terminalen.
+
+10
+00:01:10,680 --> 00:01:13,480
+Så jag tycker på den.
