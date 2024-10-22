@@ -14,7 +14,7 @@ def llama_setup(modelname):
     use for chatting.
     '''
     logging.debug(f'Setting up Llama for {modelname}')
-    logging.info('Note: you must have started an "ollama" server on your computer for this model to work.')
+    logging.debug('Note: you must have started an "ollama" server on your computer for this model to work.')
     return lambda prompt: llama_chatbot_response(modelname, prompt)
 
 
@@ -24,19 +24,20 @@ def llama_translate_chunk(model, text, context):
     given some text used as context.
     '''
     url = "http://localhost:11434/api/chat"    
-    instruction = "Translate this Swedish text to English"
-    logging.debug(f'Sending "{text}"')
-    logging.debug(f'   Messages:  "{context}"')
-    logging.debug(f'   System: "{instruction}"')
+    instruction = 'Translate the following Swedish text to English and respond in JSON using this template: {"english": ""}: '
+    content = instruction + '"' + text + '"'
+    suffix = 'without explanation, just the translation.'
+    logging.debug(f'Sending: {content}"')
+    logging.debug(f'   Context:  "{context}"')
     
     message_data = {
         "model": model,
         "messages": [
             {
-                "prompt": text,
                 "role": "user",
-                "system": instruction,
-                "messages": context
+                "content": content,
+                "context": context,
+                "suffix": suffix
             }
         ],
         "stream": False
@@ -48,7 +49,14 @@ def llama_translate_chunk(model, text, context):
     response = requests.post(url, headers=headers, json=message_data)
     response.raise_for_status()
 
-    return response.json()["message"]
+    try:
+        msg = response.json()["message"]
+        translation = json.loads(msg['content'])['english']
+    except:
+        logging.error('Could not parse response from Ollama.')
+        logging.error(f'Last message was: "{msg}"')
+        sys.exit(1)
+    return translation
 
     
                           
@@ -115,24 +123,20 @@ def read_srt(h):
             return subtitles, timestamps
         else:
             timestamp = read_timestamp(h)
-            timestamps.append(timestamp)
+            timestamps.append(timestamp.strip())
             subtitle = read_subtitle_lines(h)
             subtitles.append(subtitle)
     return subtitles, timestamps
             
 
 def srt_translator(model, subtitles, context_size):
-    translations = list()
     for idx, line in enumerate(subtitles):
         start = max(0, idx - context_size)
         stop = idx-1
         context_lst = subtitles[start:stop]
         context = ''.join(context_lst)
-        response = llama_translate_chunk(model, line, context)
-
-        translation = response
-        translations.append(translation)
-    return translations
+        translation = llama_translate_chunk(model, line, context)
+        yield translation
 
 
 
@@ -158,7 +162,7 @@ def main():
         subtitles, timestamps = read_srt(h)
         translated_subtitles = srt_translator(model, subtitles, args.contextsize)
         for idx, (timestamp, subtitle) in enumerate(zip(timestamps, translated_subtitles), start=1):
-            print(f'{idx}{timestamp}\n{subtitle}')
+            print(f'{idx}\n{timestamp}\n{subtitle}')
 
 
 if __name__ == '__main__':
