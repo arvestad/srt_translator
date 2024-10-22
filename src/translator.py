@@ -24,9 +24,9 @@ def llama_translate_chunk(model, text, context):
     given some text used as context.
     '''
     url = "http://localhost:11434/api/chat"    
-    instruction = 'Translate the following Swedish text to English and respond in JSON using this template: {"english": ""}: '
+    instruction = 'Translate the following Swedish text to English and respond in JSON using this template: {"english": "", "commentary: "", "notes": ""}: '
     content = instruction + '"' + text + '"'
-    suffix = 'without explanation, just the translation.'
+    suffix = ''
     logging.debug(f'Sending: {content}"')
     logging.debug(f'   Context:  "{context}"')
     
@@ -55,6 +55,7 @@ def llama_translate_chunk(model, text, context):
     except:
         logging.error('Could not parse response from Ollama.')
         logging.error(f'Last message was: "{msg}"')
+        logging.error(f'The request was: "{message_data}".')
         sys.exit(1)
     return translation
 
@@ -75,9 +76,9 @@ def setup_args():
                     help=f'Choose AI system to use (default: {default_model})')
     ap.add_argument('-d', '--debug', action='store_true',
                     help='Output system info for debugging purposes')
-    ap.add_argument('-m', '--chunksize', default=50,
+    ap.add_argument('-m', '--chunksize', type=int, default=50,
                     help='Number of subtitles (~lines) to translate at a time.')
-    ap.add_argument('-n', '--contextsize', default=100,
+    ap.add_argument('-n', '--contextsize', type=int, default=100,
                     help='Number of previous subtitles (~lines) to use as context for the translation request.')
     ap.add_argument('infile', help='An SRT file in Swedish, that should be translated to English.')
     return ap
@@ -129,6 +130,16 @@ def read_srt(h):
     return subtitles, timestamps
             
 
+def ensure_lower_case(s):
+    '''
+    Ensure that s[0] is lower case.
+    '''
+    if s[0].islower():
+        return s
+    else:
+        return s[0].tolower() + s[1:]
+
+
 def srt_translator(model, subtitles, context_size):
     for idx, line in enumerate(subtitles):
         start = max(0, idx - context_size)
@@ -136,7 +147,10 @@ def srt_translator(model, subtitles, context_size):
         context_lst = subtitles[start:stop]
         context = ''.join(context_lst)
         translation = llama_translate_chunk(model, line, context)
-        yield translation
+        if line[0].islower():
+            yield ensure_lower_case(translation)
+        else:
+            yield translation
 
 
 
