@@ -24,15 +24,19 @@ def llama_translate_chunk(model, text, context):
     given some text used as context.
     '''
     url = "http://localhost:11434/api/chat"    
-    logging.debug(f'Sending "{prompt}" to server, running {model}')
+    instruction = "Translate this Swedish text to English"
+    logging.debug(f'Sending "{text}"')
+    logging.debug(f'   Messages:  "{context}"')
+    logging.debug(f'   System: "{instruction}"')
+    
     message_data = {
         "model": model,
         "messages": [
             {
-                "role": "tool",
-                "system": "Translate to English",
                 "prompt": text,
-                "context": context
+                "role": "user",
+                "system": instruction,
+                "messages": context
             }
         ],
         "stream": False
@@ -43,7 +47,9 @@ def llama_translate_chunk(model, text, context):
 
     response = requests.post(url, headers=headers, json=message_data)
     response.raise_for_status()
-    return response.json()["message"]["content"]
+
+    return response.json()["message"]
+
     
                           
 
@@ -65,7 +71,7 @@ def setup_args():
                     help='Number of subtitles (~lines) to translate at a time.')
     ap.add_argument('-n', '--contextsize', default=100,
                     help='Number of previous subtitles (~lines) to use as context for the translation request.')
-    ap.add_argument('input', help='An SRT file in Swedish, that should be translated to English.')
+    ap.add_argument('infile', help='An SRT file in Swedish, that should be translated to English.')
     return ap
 
 
@@ -94,7 +100,7 @@ def read_subtitle_lines(h):
     while len(line) > 1:
         line = h.readline()
         screen_line += line
-    return screen_line
+    return screen_line.rstrip()
     
 def read_timestamp(h):
     line = h.readline()
@@ -124,7 +130,7 @@ def srt_translator(model, subtitles, context_size):
         context = ''.join(context_lst)
         response = llama_translate_chunk(model, line, context)
 
-        translation = response["message"]["content"]
+        translation = response
         translations.append(translation)
     return translations
 
@@ -150,9 +156,9 @@ def main():
 
     with open(args.infile) as h:
         subtitles, timestamps = read_srt(h)
-        translated_subtitles = srt_translator(subtitles)
-        for idx, (timestamp, subtitle) in enumerate(zip(translated_subtitles, timestamps)):
-            print(f'{idx}\n{timestamp}\n{subtitle}')
+        translated_subtitles = srt_translator(model, subtitles, args.contextsize)
+        for idx, (timestamp, subtitle) in enumerate(zip(timestamps, translated_subtitles), start=1):
+            print(f'{idx}{timestamp}\n{subtitle}')
 
 
 if __name__ == '__main__':
